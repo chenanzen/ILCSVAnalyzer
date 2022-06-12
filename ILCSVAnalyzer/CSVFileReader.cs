@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ILCSVAnalyzer
 {
-    internal class CSVFileReader
+    internal class CSVFileReader: IDisposable
     {
         private readonly TextFieldParser _csvReader;
         private readonly string[] _headers;
@@ -17,12 +17,9 @@ namespace ILCSVAnalyzer
             _csvReader = new TextFieldParser(filepath);
             _csvReader.SetDelimiters(new string[] { "," });
             _csvReader.HasFieldsEnclosedInQuotes = true;
-        }
 
-        private void Dispose()
-        {
-            _csvReader.Close();
-            _csvReader.Dispose();
+            // first row is column name
+            _headers = _csvReader.ReadFields();
         }
 
         public string[] GetHeaders()
@@ -30,24 +27,20 @@ namespace ILCSVAnalyzer
             return _headers;
         }
 
-        public Dictionary<string, string> ReadLine()
+        public string[] ReadLine()
         {
-            var result = new Dictionary<string, string>();
-            var rowdata = _csvReader.ReadFields();
-            for (int i = 0; i < _headers.Length; i++)
-            {
-                if (rowdata.Length >= i)
-                    result.Add(_headers[i], rowdata[i]);
-                else
-                    result.Add(_headers[i], string.Empty);
-            }
-
-            return result;
+            return _csvReader.ReadFields();
         }
 
         public bool EndOfData()
         {
             return _csvReader.EndOfData;
+        }
+
+        void IDisposable.Dispose()
+        {
+            _csvReader.Close();
+            _csvReader.Dispose();
         }
     }
 }

@@ -12,9 +12,12 @@ namespace ILCSVAnalyzer
 {
     public partial class MainForm : Form
     {
+        private CSVFIleAnalyzer CsvFileAnalyzer { get; set; }
+        private FormMessagePrompt MessagePrompt { get; set; }
         public MainForm()
         {
             InitializeComponent();
+            MessagePrompt = new FormMessagePrompt();
         }
 
         private void LoadCSVButton_Click(object sender, EventArgs e)
@@ -37,6 +40,33 @@ namespace ILCSVAnalyzer
             if (openCSVFileDialog.ShowDialog() == DialogResult.OK)
             {
                 CSVFileName.Text = openCSVFileDialog.FileName;
+
+                CsvFileAnalyzer = new CSVFIleAnalyzer(openCSVFileDialog.FileName);
+                if (CsvFileAnalyzer.ShowStopper)
+                {
+                    // stop process and show error
+                    MessagePrompt.ShowDialog("Show Stopper Error", CsvFileAnalyzer.Errors);
+                }
+                else
+                {
+                    if (CsvFileAnalyzer.Errors.Any())
+                    {
+                        // show warning
+                        MessagePrompt.ShowDialog("Warnings", CsvFileAnalyzer.Errors);
+                    }
+
+                    // clear datagrid
+                    dataGridView1.DataSource = CsvFileAnalyzer.ImportedDataTable;
+                    for(int i=0; i<CsvFileAnalyzer.CSVColumns.Count; i++)
+                    {
+                        dataGridView1.Columns[i].HeaderText = CsvFileAnalyzer.CSVColumns[i].HeaderName;
+                    }
+                    LabelNumOfWord.Text = $"{CsvFileAnalyzer.NumOfWords}";
+                    LabelNumOfLetters.Text = $"{CsvFileAnalyzer.NumOfLetters}";
+                    LabelNumOfNumeric.Text = $"{CsvFileAnalyzer.NumOfNumeric}";
+                    LabelNumOfDateTime.Text = $"{CsvFileAnalyzer.NumOfDates}";
+
+                }
             }
         }
     }

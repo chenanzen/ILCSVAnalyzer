@@ -9,3 +9,4 @@ D:\Projects\ILCSVAnalyzer\ILCSVAnalyzer\obj\Debug\ILCSVAnalyzer.csproj.GenerateR
 D:\Projects\ILCSVAnalyzer\ILCSVAnalyzer\obj\Debug\ILCSVAnalyzer.csproj.CoreCompileInputs.cache
 D:\Projects\ILCSVAnalyzer\ILCSVAnalyzer\obj\Debug\ILCSVAnalyzer.exe
 D:\Projects\ILCSVAnalyzer\ILCSVAnalyzer\obj\Debug\ILCSVAnalyzer.pdb
+D:\Projects\ILCSVAnalyzer\ILCSVAnalyzer\obj\Debug\ILCSVAnalyzer.FormMessagePrompt.resources

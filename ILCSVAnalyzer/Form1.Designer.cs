@@ -28,17 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.CSVFileName = new System.Windows.Forms.TextBox();
             this.LoadCSVButton = new System.Windows.Forms.Button();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.LabelNumOfWord = new System.Windows.Forms.Label();
+            this.LabelNumOfLetters = new System.Windows.Forms.Label();
+            this.LabelNumOfNumeric = new System.Windows.Forms.Label();
+            this.LabelNumOfDateTime = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CSVFileName
@@ -68,36 +73,112 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 58);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 273);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 82;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(1225, 438);
+            this.dataGridView1.Size = new System.Drawing.Size(1225, 551);
             this.dataGridView1.TabIndex = 3;
             // 
-            // chart1
+            // groupBox1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 524);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(1225, 300);
-            this.chart1.TabIndex = 4;
-            this.chart1.Text = "chart1";
+            this.groupBox1.Controls.Add(this.LabelNumOfDateTime);
+            this.groupBox1.Controls.Add(this.LabelNumOfNumeric);
+            this.groupBox1.Controls.Add(this.LabelNumOfLetters);
+            this.groupBox1.Controls.Add(this.LabelNumOfWord);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Location = new System.Drawing.Point(12, 93);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1222, 150);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Statistic";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(17, 31);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(179, 25);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Number of Words";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(17, 71);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(183, 25);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Number of Letters";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(531, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 25);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Number of Numeric";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(531, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(215, 25);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Number of Date Time";
+            // 
+            // LabelNumOfWord
+            // 
+            this.LabelNumOfWord.AutoSize = true;
+            this.LabelNumOfWord.Location = new System.Drawing.Point(230, 31);
+            this.LabelNumOfWord.Name = "LabelNumOfWord";
+            this.LabelNumOfWord.Size = new System.Drawing.Size(36, 25);
+            this.LabelNumOfWord.TabIndex = 4;
+            this.LabelNumOfWord.Text = "##";
+            // 
+            // LabelNumOfLetters
+            // 
+            this.LabelNumOfLetters.AutoSize = true;
+            this.LabelNumOfLetters.Location = new System.Drawing.Point(230, 71);
+            this.LabelNumOfLetters.Name = "LabelNumOfLetters";
+            this.LabelNumOfLetters.Size = new System.Drawing.Size(36, 25);
+            this.LabelNumOfLetters.TabIndex = 5;
+            this.LabelNumOfLetters.Text = "##";
+            // 
+            // LabelNumOfNumeric
+            // 
+            this.LabelNumOfNumeric.AutoSize = true;
+            this.LabelNumOfNumeric.Location = new System.Drawing.Point(772, 31);
+            this.LabelNumOfNumeric.Name = "LabelNumOfNumeric";
+            this.LabelNumOfNumeric.Size = new System.Drawing.Size(36, 25);
+            this.LabelNumOfNumeric.TabIndex = 6;
+            this.LabelNumOfNumeric.Text = "##";
+            // 
+            // LabelNumOfDateTime
+            // 
+            this.LabelNumOfDateTime.AutoSize = true;
+            this.LabelNumOfDateTime.Location = new System.Drawing.Point(772, 71);
+            this.LabelNumOfDateTime.Name = "LabelNumOfDateTime";
+            this.LabelNumOfDateTime.Size = new System.Drawing.Size(36, 25);
+            this.LabelNumOfDateTime.TabIndex = 7;
+            this.LabelNumOfDateTime.Text = "##";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1249, 836);
-            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.LoadCSVButton);
@@ -106,7 +187,8 @@
             this.Name = "MainForm";
             this.Text = "Illumina CSV Analyzer";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,7 +200,15 @@
         private System.Windows.Forms.Button LoadCSVButton;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label LabelNumOfDateTime;
+        private System.Windows.Forms.Label LabelNumOfNumeric;
+        private System.Windows.Forms.Label LabelNumOfLetters;
+        private System.Windows.Forms.Label LabelNumOfWord;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
